@@ -1,0 +1,38 @@
+name: Observer
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Payload'ı özet ekranına yaz
+        run: |
+          echo '## workflow_run payload' >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat "$GITHUB_EVENT_PATH" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Jobs API çıktısını çek
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RUN_ID=${{ github.event.workflow_run.id }}
+          cp "$GITHUB_EVENT_PATH" event.json
+          gh api "/repos/${{ github.repository }}/actions/runs/$RUN_ID/jobs" > jobs.json
+          gh api "/repos/${{ github.repository }}/commits/${{ github.event.workflow_run.head_sha }}/check-runs" > checks.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: raw-payloads
+          path: |
+            event.json
+            jobs.json
+            checks.json
