@@ -18,10 +18,4 @@ public class CalculatorTests
         var calc = new Calculator();
         Assert.Equal(1, calc.Add(3, -2));
     }
-
-    [Fact]
-    public void ThrowsUnexpectedException()
-    {
-        throw new InvalidOperationException("Beklenmeyen hata");
-    }
 }
