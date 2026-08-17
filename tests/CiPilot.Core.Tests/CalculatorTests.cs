@@ -16,6 +16,6 @@ public class CalculatorTests
     public void Add_WithNegativeNumber_ReturnsCorrectSum()
     {
         var calc = new Calculator();
-        Assert.Equal(1, calc.Add(3, -2));
+        Assert.Equal(555, calc.Add(3, -2));
     }
 }
