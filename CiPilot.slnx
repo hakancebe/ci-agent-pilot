@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/src/">
-    <Project Path="src/CiPilot.Core/CiPilot.Core.csproj" />
-  </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/CiPilot.Core.Tests/CiPilot.Core.Tests.csproj" />
-  </Folder>
-</Solution>
