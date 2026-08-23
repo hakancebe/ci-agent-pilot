@@ -9,7 +9,7 @@ public class CalculatorTests
     public void Add_ReturnsSum()
     {
         var calc = new Calculator();
-        Assert.Equal(300, calc.Add(2, 2));
+        Assert.Equal(350, calc.Add(2, 2));
     }
 
     [Fact]
