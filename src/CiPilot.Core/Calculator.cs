@@ -2,5 +2,5 @@ namespace CiPilot.Core;
 
 public class Calculator
 {
-    public int Add(int a, int b) => a + baad;
+    public int Add(int a, int b) => a + b;
 }
