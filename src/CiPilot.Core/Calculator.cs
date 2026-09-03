@@ -6,5 +6,5 @@ public class Calculator
 
     // CiAgent Faz 2 (/fix) uçtan uca doğrulaması için KASITLI derleme hatası.
     // Bu dal ve PR doğrulama bitince silinecek.
-    public int Multiply(int a, int b) => a * b
+    public int Multiply(int a, int b) => a * b;
 }
