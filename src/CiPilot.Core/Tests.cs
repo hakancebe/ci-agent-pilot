@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 //     }
 // }
 
-// 3) Tanımsız değişken (CS0103) — tur 1
+// 3) Tanımsız değişken (CS0103) — tur 2
 public class TanimsizDegiskenTest
 {
     public void Calistir()
