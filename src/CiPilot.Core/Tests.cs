@@ -19,7 +19,7 @@ public class TipUyusmazligiTest
 {
     public void Calistir()
     {
-        int sayi = 0;
+        int sayi = "metin";
     }
 }
 
