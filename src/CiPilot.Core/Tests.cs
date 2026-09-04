@@ -19,7 +19,7 @@ public class TipUyusmazligiTest
 {
     public void Calistir()
     {
-        int sayi = "metin";
+        string sayi = "metin";
     }
 }
 
