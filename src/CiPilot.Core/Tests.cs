@@ -28,7 +28,7 @@ public class TanimsizDegiskenTest
 {
     public void Calistir()
     {
-        Console.WriteLine("Bir değer");
+        Console.WriteLine(tanimsizDegisken);
     }
 }
 
