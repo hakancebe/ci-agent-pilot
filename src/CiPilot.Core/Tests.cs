@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 //     }
 // }
 
-// 3) Tanımsız değişken (CS0103)
+// 3) Tanımsız değişken (CS0103) — v0.4.1 rozet doğrulaması
 public class TanimsizDegiskenTest
 {
     public void Calistir()
