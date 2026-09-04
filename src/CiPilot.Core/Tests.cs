@@ -28,7 +28,7 @@ public class TanimsizDegiskenTest
 {
     public void Calistir()
     {
-        Console.WriteLine("örnek metin");
+        Console.WriteLine(tanimsizDegisken);
     }
 }
 
