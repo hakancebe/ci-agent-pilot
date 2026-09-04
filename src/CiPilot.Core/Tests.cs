@@ -23,7 +23,7 @@ public class TipUyusmazligiTest
     }
 }
 
-// // 3) Tanımsız değişken (CS0103)
+// 3) Tanımsız değişken (CS0103)
 // public class TanimsizDegiskenTest
 // {
 //     public void Calistir()
