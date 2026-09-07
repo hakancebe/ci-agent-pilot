@@ -21,3 +21,18 @@ jobs:
         run: dotnet build --no-restore -c Release
       - name: Test
         run: dotnet test --no-build -c Release
+
+  # --- GEÇİCİ ÖLÇÜM: .NET dışı bir dil ---------------------------------
+  # Bugüne dek her analiz C#/xUnit üzerindeydi. Node'un kendi test
+  # koşucusu tamamen farklı bir çıktı biçimi üretiyor (TAP formatı).
+  # Ölçülecek: analiz dil bağımsız mı, yoksa xUnit'e mi bağlı?
+  # Bağımlılık yok, npm install gerekmiyor.
+  node-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Node testleri
+        run: node --test node-app/
