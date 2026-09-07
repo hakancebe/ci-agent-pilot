@@ -62,15 +62,3 @@ jobs:
           echo "--- container loglari ---"
           docker logs cipilot-api 2>&1 || true
           exit 1
-
-  # --- GEÇİCİ ÖLÇÜM (3. tur) --------------------------------------------
-  # Yalnızca takılan job. Amaç: "başka başarısız job yokken iptal edilenlere
-  # bakılıyor" kuralının gerçekten çalıştığını görmek. Bir önceki turda
-  # yanında iki patlayan job vardı ve bu job kural gereği atlanmıştı.
-
-  olcum-takilan-adim:
-    runs-on: ubuntu-latest
-    timeout-minutes: 1
-    steps:
-      - name: Zaman aşımına kadar bekle
-        run: sleep 120
