@@ -1,0 +1,7 @@
+# Kasıtlı bozuk: olmayan bir klasörü kopyalamaya çalışıyor.
+# Amaç, "docker build patladı" hata sınıfını ölçmek — bu sınıfta
+# container hiç oluşmadığı için `docker logs` diye bir kanıt da yok.
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY boyle-bir-klasor-yok/ .
+ENTRYPOINT ["dotnet", "CiPilot.Api.dll"]
