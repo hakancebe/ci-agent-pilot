@@ -24,22 +24,22 @@ using System.Threading.Tasks;
 // }
 
 // 3) Tanımsız değişken (CS0103) — tur 4
-public class TanimsizDegiskenTest
-{
-    public void Calistir()
-    {
-        Console.WriteLine(tanimsizDegisken);
-    }
-}
-
-// // 4) Eksik using / bilinmeyen tip (CS0246)
-// public class EksikUsingTest
+// public class TanimsizDegiskenTest
 // {
 //     public void Calistir()
 //     {
-//         Liste<string> liste = new Liste<string>();
+//         Console.WriteLine(tanimsizDegisken);
 //     }
 // }
+
+// 4) Eksik using / bilinmeyen tip (CS0246)
+public class EksikUsingTest
+{
+    public void Calistir()
+    {
+        Liste<string> liste = new Liste<string>();
+    }
+}
 
 // // 5) Erişim belirleyici hatası (CS0122)
 // public class GizliMetodSahibi
