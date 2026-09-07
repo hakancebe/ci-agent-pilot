@@ -134,3 +134,30 @@ bırakıyor; `timeout` kullanmayan bir adım hiç görülmüyor.
 
 Agent bunları telafi edemez, yalnızca dürüstçe "bilmiyorum" diyebilir —
 ve v0.6.9'dan sonra diyor.
+
+10. Canlı doğrulama — CI_AGENT_ANALYZE_CANCELLED=true (CD run 34131451957)
+
+Ayar açıldıktan sonra aynı senaryo tekrarlandı: deploy yeşil, tek
+başarısızlık zaman aşımı, run conclusion=cancelled.
+
+Agent loglarında zincirin her katmanı göründü:
+
+  "Başarısız job yok ama 1 job iptal/zaman aşımı ile bitmiş; takılma
+   ihtimaline karşı bunlar analiz edilecek (olcum-takilan-adim)."
+  ErrorContext: job=olcum-takilan-adim, adım=Zaman aşımına kadar bekle
+
+Rapor çıktısı:
+
+  Tespit edilen tüm hatalar (1)
+  - Timeout
+    `The operation was canceled.`
+
+  Kök Neden (güven: yüksek): "1 dakikalık maksimum çalışma süresini
+  aşması nedeniyle GitHub Actions tarafından iptal edildi."
+
+Hata tipi "Generic" değil "Timeout" görünüyor; öneri de doğru dosyayı
+ve iki somut seçeneği veriyor (timeout süresini artır ya da bekleme
+süresini düşür).
+
+Yani üç katman da doğrulandı: run seviyesi (WebhookParser ayarı), job
+seviyesi (cancelled fallback), adım seviyesi (FindCancelledStep).
