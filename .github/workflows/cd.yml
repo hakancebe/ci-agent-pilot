@@ -63,22 +63,10 @@ jobs:
           docker logs cipilot-api 2>&1 || true
           exit 1
 
-  # --- GEÇİCİ ÖLÇÜM JOB'LARI --------------------------------------------
-  # Üç farklı deploy hata sınıfını ve "birden fazla job patlarsa ne olur"
-  # sorusunu tek çalıştırmada ölçmek için. Ölçüm bitince kaldırılacak.
-
-  olcum-docker-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Bozuk imajı derle
-        run: docker build -f Dockerfile.bozuk -t olcum-bozuk .
-
-  olcum-sessiz-hata:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Hiçbir açıklama vermeden başarısız ol
-        run: exit 1
+  # --- GEÇİCİ ÖLÇÜM (3. tur) --------------------------------------------
+  # Yalnızca takılan job. Amaç: "başka başarısız job yokken iptal edilenlere
+  # bakılıyor" kuralının gerçekten çalıştığını görmek. Bir önceki turda
+  # yanında iki patlayan job vardı ve bu job kural gereği atlanmıştı.
 
   olcum-takilan-adim:
     runs-on: ubuntu-latest
