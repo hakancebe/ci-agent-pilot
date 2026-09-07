@@ -14,6 +14,16 @@ if (string.IsNullOrWhiteSpace(connectionString))
         + "Deploy adımında bu değerin container'a geçirilmesi gerekiyor.");
 }
 
+// İkinci zorunlu ayar. main'deki cd.yml bunu container'a geçirmiyor,
+// dolayısıyla bu daldaki deploy kasıtlı olarak patlayacak.
+var apiKey = Environment.GetEnvironmentVariable("CIPILOT_API_KEY");
+if (string.IsNullOrWhiteSpace(apiKey))
+{
+    throw new InvalidOperationException(
+        "CIPILOT_API_KEY ortam değişkeni tanımlı değil. "
+        + "Deploy adımında bu değerin container'a geçirilmesi gerekiyor.");
+}
+
 app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));
 
 app.MapGet("/add", (int a, int b) => Results.Ok(new { result = new Calculator().Add(a, b) }));
