@@ -42,10 +42,10 @@ using System.Threading.Tasks;
 // }
 
 // // 5) Erişim belirleyici hatası (CS0122)
-// public class GizliMetodSahibi
-// {
-//     private void GizliMetod() { }
-// }
+public class GizliMetodSahibi
+{
+    public void GizliMetod() { }
+}
 
 public class ErisimHatasiTest
 {
