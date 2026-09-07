@@ -62,3 +62,14 @@ jobs:
           echo "--- container loglari ---"
           docker logs cipilot-api 2>&1 || true
           exit 1
+
+  # --- GEÇİCİ ÖLÇÜM: yalnızca zaman aşımı --------------------------------
+  # CI_AGENT_ANALYZE_CANCELLED=true yolunu canlıda doğrulamak için.
+  # Bu job tek başına patlarsa run conclusion'ı "cancelled" olur; ayar
+  # kapalıyken agent hiç uyanmıyordu.
+  olcum-takilan-adim:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Zaman aşımına kadar bekle
+        run: sleep 120
