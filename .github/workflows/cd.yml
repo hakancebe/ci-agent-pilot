@@ -34,8 +34,15 @@ jobs:
         run: docker build -t cipilot-api:${{ github.sha }} .
 
       - name: Start container
+        # Uygulama bu değişken olmadan açılmıyor; bu bilinçli bir tercih
+        # (eksik yapılandırmayla sessizce çalışmaktansa açılışta dursun).
+        # Gerçek bir dağıtımda değer secrets'tan gelir:
+        #   -e CIPILOT_CONNECTION_STRING="${{ secrets.CIPILOT_CONNECTION_STRING }}"
+        # Burası pilot repo olduğu için sahte bir demo değeri veriliyor.
         run: |
-          docker run -d --name cipilot-api -p 8080:8080 cipilot-api:${{ github.sha }}
+          docker run -d --name cipilot-api -p 8080:8080 \
+            -e CIPILOT_CONNECTION_STRING="Server=demo;Database=cipilot" \
+            cipilot-api:${{ github.sha }}
 
       - name: Smoke test
         run: |
