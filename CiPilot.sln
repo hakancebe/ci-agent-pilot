@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{646970C2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiPilot.Core.Tests", "tests\CiPilot.Core.Tests\CiPilot.Core.Tests.csproj", "{ABF3AEF7-9863-4612-BA02-FD6C82263DA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiPilot.Api", "src\CiPilot.Api\CiPilot.Api.csproj", "{F6028623-9B8F-4965-9917-0B1781C8A0A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +30,14 @@ Global
 		{ABF3AEF7-9863-4612-BA02-FD6C82263DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABF3AEF7-9863-4612-BA02-FD6C82263DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABF3AEF7-9863-4612-BA02-FD6C82263DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6028623-9B8F-4965-9917-0B1781C8A0A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6028623-9B8F-4965-9917-0B1781C8A0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6028623-9B8F-4965-9917-0B1781C8A0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6028623-9B8F-4965-9917-0B1781C8A0A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2B29608B-B5D1-4E43-845B-2F872142CA8C} = {A4A22E75-4AC5-4FEC-A02F-BDD1FB9AA1A5}
 		{ABF3AEF7-9863-4612-BA02-FD6C82263DA2} = {646970C2-F025-4270-9AE4-0AAA31E2B581}
+		{F6028623-9B8F-4965-9917-0B1781C8A0A6} = {A4A22E75-4AC5-4FEC-A02F-BDD1FB9AA1A5}
 	EndGlobalSection
 EndGlobal

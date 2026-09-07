@@ -1,0 +1,57 @@
+name: CD
+
+# CI yeşile dönmeden deploy edilmez. workflow_run zinciri, görevdeki
+# "CI ile başlayıp CD bitene kadar" akışının birebir karşılığı.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish
+        run: dotnet publish src/CiPilot.Api/CiPilot.Api.csproj -c Release -o publish
+
+      - name: Build image
+        run: docker build -t cipilot-api:${{ github.sha }} .
+
+      - name: Start container
+        run: |
+          docker run -d --name cipilot-api -p 8080:8080 cipilot-api:${{ github.sha }}
+
+      - name: Smoke test
+        run: |
+          for i in $(seq 1 10); do
+            if curl -fsS http://localhost:8080/health; then
+              echo ""
+              echo "Health check gecti."
+              exit 0
+            fi
+            echo "deneme $i/10 - servis henuz yanit vermiyor, 2sn bekleniyor"
+            sleep 2
+          done
+
+          echo "::error::Health check 20 saniye sonunda basarisiz oldu"
+          echo "--- container durumu ---"
+          docker ps -a --filter name=cipilot-api --format '{{.Names}}\t{{.Status}}'
+          echo "--- container loglari ---"
+          docker logs cipilot-api 2>&1 || true
+          exit 1
