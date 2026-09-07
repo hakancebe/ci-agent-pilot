@@ -37,7 +37,7 @@ public class EksikUsingTest
 {
     public void Calistir()
     {
-        Liste<string> liste = new Liste<string>();
+        List<string> liste = new List<string>();
     }
 }
 
