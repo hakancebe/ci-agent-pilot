@@ -33,13 +33,13 @@ using System.Threading.Tasks;
 // }
 
 // 4) Eksik using / bilinmeyen tip (CS0246)
-public class EksikUsingTest
-{
-    public void Calistir()
-    {
-        List<string> liste = new List<string>();
-    }
-}
+// public class EksikUsingTest
+// {
+//     public void Calistir()
+//     {
+//         Liste<string> liste = new Liste<string>();
+//     }
+// }
 
 // // 5) Erişim belirleyici hatası (CS0122)
 // public class GizliMetodSahibi
@@ -47,13 +47,13 @@ public class EksikUsingTest
 //     private void GizliMetod() { }
 // }
 
-// public class ErisimHatasiTest
-// {
-//     public void Calistir()
-//     {
-//         new GizliMetodSahibi().GizliMetod();
-//     }
-// }
+public class ErisimHatasiTest
+{
+    public void Calistir()
+    {
+        new GizliMetodSahibi().GizliMetod();
+    }
+}
 
 // // 6) Eksik parametre (CS7036)
 // public class EksikParametreTest
