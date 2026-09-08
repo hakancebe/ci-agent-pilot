@@ -42,29 +42,29 @@ using System.Threading.Tasks;
 // }
 
 // // 5) Erişim belirleyici hatası (CS0122)
-public class GizliMetodSahibi
-{
-    public void GizliMetod() { }
-}
-
-public class ErisimHatasiTest
-{
-    public void Calistir()
-    {
-        new GizliMetodSahibi().GizliMetod();
-    }
-}
-
-// // 6) Eksik parametre (CS7036)
-// public class EksikParametreTest
+// public class GizliMetodSahibi
 // {
-//     public void Topla(int a, int b) { }
+//     public void GizliMetod() { }
+// }
 
+// public class ErisimHatasiTest
+// {
 //     public void Calistir()
 //     {
-//         Topla(5);
+//         new GizliMetodSahibi().GizliMetod();
 //     }
 // }
+
+// 6) Eksik parametre (CS7036)
+public class EksikParametreTest
+{
+    public void Topla(int a, int b) { }
+
+    public void Calistir()
+    {
+        Topla(5);
+    }
+}
 
 // // 7) Interface implement edilmemiş (CS0535)
 // public interface IHesapla
