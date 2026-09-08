@@ -1,10 +1,10 @@
 namespace CiPilot.Core;
 
-// --- ÖLÇÜM (v0.8.3): fixable=false sinyalleri ---
-// Üç ayrı derleyici hatası, üçü de farklı "belirsizlik" türü:
+// --- ÖLÇÜM (v0.8.3): fixable=false, gövde seviyesi iki hata ---
 //   CS7036 - eksik argüman   -> bir değer koymak zorunlu (sınırda)
-//   CS0535 - arayüz metodu uygulanmamis -> govde belirsiz  -> fixable=false beklenir
-//   CS8602 - null dereference -> birden fazla mesru duzeltme -> fixable=false beklenir
+//   CS8602 - null dereference -> birden fazla meşru düzeltme -> fixable=false beklenir
+// (CS0535 kaldırıldı: bildirim hatası varken Roslyn gövde analizini durduruyor,
+//  diğer iki hata hiç raporlanmıyordu.)
 
 public class EksikParametreTest
 {
@@ -14,15 +14,6 @@ public class EksikParametreTest
     {
         Topla(5);
     }
-}
-
-public interface IHesapla
-{
-    int Hesapla(int x);
-}
-
-public class InterfaceHatasiTest : IHesapla
-{
 }
 
 public class NullRefTest
