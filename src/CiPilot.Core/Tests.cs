@@ -66,27 +66,27 @@ using System.Threading.Tasks;
 //     }
 // }
 
-// // 7) Interface implement edilmemiş (CS0535)
-// public interface IHesapla
-// {
-//     int Hesapla(int x);
-// }
-
-// public class InterfaceHatasiTest : IHesapla
-// {
-// }
-
-// 8) Nullable reference hatası (CS8602)
-#nullable enable
-public class NullRefTest
+// 7) Interface implement edilmemiş (CS0535)
+public interface IHesapla
 {
-    public void Calistir()
-    {
-        string? isim = null;
-        int uzunluk = isim.Length;
-    }
+    int Hesapla(int x);
 }
-#nullable disable
+
+public class InterfaceHatasiTest : IHesapla
+{
+}
+
+// // 8) Nullable reference hatası (CS8602)
+// #nullable enable
+// public class NullRefTest
+// {
+//     public void Calistir()
+//     {
+//         string? isim = null;
+//         int uzunluk = isim.Length;
+//     }
+// }
+// #nullable disable
 
 // // 9) Duplicate tip tanımı (CS0101)
 // public class DuplicateTest
