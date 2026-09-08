@@ -56,15 +56,15 @@ using System.Threading.Tasks;
 // }
 
 // 6) Eksik parametre (CS7036)
-// public class EksikParametreTest
-// {
-//     public void Topla(int a, int b) { }
+public class EksikParametreTest
+{
+    public void Topla(int a, int b) { }
 
-//     public void Calistir()
-//     {
-//         Topla(5);
-//     }
-// }
+    public void Calistir()
+    {
+        Topla(5);
+    }
+}
 
 // // 7) Interface implement edilmemiş (CS0535)
 // public interface IHesapla
