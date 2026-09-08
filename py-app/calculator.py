@@ -2,8 +2,7 @@
 
 
 def add(a, b):
-    # ÖLÇÜM: kasıtlı hata
-    return a - b
+    return a + b
 
 
 def multiply(a, b):
