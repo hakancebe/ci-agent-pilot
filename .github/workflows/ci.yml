@@ -36,3 +36,17 @@ jobs:
           node-version: '20'
       - name: Node testleri
         run: node --test node-app/
+
+  # ÖLÇÜM: agent .NET dışı ÜÇÜNCÜ bir dilde de çalışıyor mu? Node ölçülmüştü;
+  # Python'un yığın izi biçimi tamamen farklı ("File ..., line N").
+  python-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python testleri
+        run: |
+          pip install pytest
+          cd py-app && pytest -q
