@@ -1,9 +1,8 @@
-"""Basit hesap makinesi — ölçüm için kasıtlı hatalı."""
+"""Basit hesap makinesi."""
 
 
 def add(a, b):
-    # KASITLI HATA: toplama yerine çıkarma
-    return a - b
+    return a + b
 
 
 def multiply(a, b):
