@@ -62,3 +62,22 @@ jobs:
           echo "--- container loglari ---"
           docker logs cipilot-api 2>&1 || true
           exit 1
+
+  # --- GEÇİCİ ÖLÇÜM: gerçek bulut deploy hatası -------------------------
+  # Şimdiye kadarki tüm CD ölçümleri yerel container üzerindeydi. Bu job
+  # gerçekten Azure'a bağlanmaya çalışıyor; kimlik bilgileri kasıtlı olarak
+  # geçersiz (hepsi sıfır/placeholder, gerçek bir sır içermiyor).
+  # Amaç: dosya:satır içermeyen, tamamen ortam kaynaklı gerçek bir bulut
+  # hatasında agent ne diyor?
+  olcum-bulut-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure'a giriş yap
+        run: |
+          az login --service-principal \
+            --username "00000000-0000-0000-0000-000000000000" \
+            --password "gecersiz-placeholder-secret" \
+            --tenant "11111111-1111-1111-1111-111111111111"
+
+      - name: Container App'i güncelle
+        run: az containerapp update -n cipilot-api -g rg-cipilot --image cipilot:latest
