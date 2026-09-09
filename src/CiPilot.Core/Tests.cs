@@ -67,14 +67,14 @@ using System.Threading.Tasks;
 // }
 
 // 7) Interface implement edilmemiş (CS0535)
-public interface IHesapla
-{
-    int Hesapla(int x);
-}
+// public interface IHesapla
+// {
+//     int Hesapla(int x);
+// }
 
-public class InterfaceHatasiTest : IHesapla
-{
-}
+// public class InterfaceHatasiTest : IHesapla
+// {
+// }
 
 // // 8) Nullable reference hatası (CS8602)
 // #nullable enable
@@ -88,11 +88,11 @@ public class InterfaceHatasiTest : IHesapla
 // }
 // #nullable disable
 
-// // 9) Duplicate tip tanımı (CS0101)
-// public class DuplicateTest
-// {
-//     public class DuplicateTest { }
-// }
+// 9) Duplicate tip tanımı (CS0101)
+public class DuplicateTest
+{
+    public class DuplicateTest { }
+}
 
 // // 10) Async/await yanlış kullanımı (CS4033)
 // public class AsyncHatasiTest
