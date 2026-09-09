@@ -2,7 +2,7 @@
 
 
 def add(a, b):
-    return a + 
+    return a + b
 
 
 def multiply(a, b):
