@@ -86,7 +86,6 @@ jobs:
         # Burası pilot repo olduğu için sahte bir demo değeri veriliyor.
         run: |
           docker run -d --name cipilot-api -p 8080:8080 \
-  
             cipilot-api:${{ github.sha }}
 
       - name: Smoke test
