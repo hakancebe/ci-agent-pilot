@@ -1,11 +1,11 @@
 name: CD
 
-# CI yeşile dönmeden deploy edilmez. workflow_run zinciri, görevdeki
-# "CI ile başlayıp CD bitene kadar" akışının birebir karşılığı.
+# ARTIK OTOMATİK KOŞMUYOR. Deploy job'ı ci.yml içine taşındı ve orada
+# needs: ile test job'larına bağlandı. Sebep: workflow_run ile tetiklenen
+# çalışmalar PR'ın Checks kutusunda hiç görünmüyor, GitHub onları her
+# zaman varsayılan dala yazıyor. Bu dosya yalnızca elle tetikleme ve
+# referans için duruyor.
 on:
-  workflow_run:
-    workflows: [CI]
-    types: [completed]
   workflow_dispatch:
 
 permissions:

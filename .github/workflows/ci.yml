@@ -50,3 +50,60 @@ jobs:
         run: |
           pip install pytest
           cd py-app && pytest -q
+
+  # --- CD: dağıtılabilirlik doğrulaması --------------------------------
+  # Üç test job'ı da geçmeden başlamaz (needs). Aynı workflow içinde
+  # durduğu için PR'ın Checks kutusunda "CI / CD - deploy" olarak görünüyor.
+  # Ayrı bir dosyada workflow_run ile zincirlendiğinde PR ekranına hiç
+  # düşmüyordu: GitHub o çalışmaları her zaman varsayılan dala yazıyor.
+  #
+  # Bu aşama bir ortama deploy ETMİYOR. İmajı kurup container'ı ayağa
+  # kaldırıyor ve health check atıyor, yani runner'dan çıkmıyor. Gerçek
+  # ortam dağıtımı ayrı ve tag tetiklemeli bir workflow olmalı.
+  deploy:
+    name: CD - deploy
+    needs: [build-test, node-test, python-test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish
+        run: dotnet publish src/CiPilot.Api/CiPilot.Api.csproj -c Release -o publish
+
+      - name: Build image
+        run: docker build -t cipilot-api:${{ github.sha }} .
+
+      - name: Start container
+        # Uygulama bu değişken olmadan açılmıyor; bu bilinçli bir tercih
+        # (eksik yapılandırmayla sessizce çalışmaktansa açılışta dursun).
+        # Gerçek bir dağıtımda değer secrets'tan gelir:
+        #   -e CIPILOT_CONNECTION_STRING="${{ secrets.CIPILOT_CONNECTION_STRING }}"
+        # Burası pilot repo olduğu için sahte bir demo değeri veriliyor.
+        run: |
+          docker run -d --name cipilot-api -p 8080:8080 \
+            -e CIPILOT_CONNECTION_STRING="Server=demo;Database=cipilot" \
+            cipilot-api:${{ github.sha }}
+
+      - name: Smoke test
+        run: |
+          for i in $(seq 1 10); do
+            if curl -fsS http://localhost:8080/health; then
+              echo ""
+              echo "Health check gecti."
+              exit 0
+            fi
+            echo "deneme $i/10 - servis henuz yanit vermiyor, 2sn bekleniyor"
+            sleep 2
+          done
+
+          echo "::error::Health check 20 saniye sonunda basarisiz oldu"
+          echo "--- container durumu ---"
+          docker ps -a --filter name=cipilot-api --format '{{.Names}}\t{{.Status}}'
+          echo "--- container loglari ---"
+          docker logs cipilot-api 2>&1 || true
+          exit 1
