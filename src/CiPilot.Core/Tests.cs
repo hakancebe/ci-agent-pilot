@@ -91,7 +91,7 @@ using System.Threading.Tasks;
 // 9) Duplicate tip tanımı (CS0101)
 public class DuplicateTest
 {
-    public class DuplicateTest { }
+    public class DuplicateTestInner { }
 }
 
 // // 10) Async/await yanlış kullanımı (CS4033)
