@@ -97,8 +97,8 @@ using System.Threading.Tasks;
 // 10) Async/await yanlış kullanımı (CS4033)
 public class AsyncHatasiTest
 {
-    public void MetodAsenkronDegil()
+    public async Task MetodAsenkronDegil()
     {
-        var sonuc = await Task.Delay(1000);
+        await Task.Delay(1000);
     }
 }
