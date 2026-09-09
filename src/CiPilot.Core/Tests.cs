@@ -88,17 +88,17 @@ using System.Threading.Tasks;
 // }
 // #nullable disable
 
-// 9) Duplicate tip tanımı (CS0101)
-public class DuplicateTest
-{
-    public class DuplicateTestInner { }
-}
-
-// // 10) Async/await yanlış kullanımı (CS4033)
-// public class AsyncHatasiTest
+// // 9) Duplicate tip tanımı (CS0101)
+// public class DuplicateTest
 // {
-//     public void MetodAsenkronDegil()
-//     {
-//         var sonuc = await Task.Delay(1000);
-//     }
+//     public class DuplicateInner { }
 // }
+
+// 10) Async/await yanlış kullanımı (CS4033)
+public class AsyncHatasiTest
+{
+    public void MetodAsenkronDegil()
+    {
+        var sonuc = await Task.Delay(1000);
+    }
+}
