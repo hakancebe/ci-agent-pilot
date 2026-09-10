@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 // TEK SEFERDE SADECE 1 SENARYOYU AKTİF BIRAKIP DİĞERLERİNİ YORUM SATIRI YAP
 // Hepsi aynı anda açıksa çok sayıda hata birden basar (istersen öyle de test edebilirsin)
 
-// // 1) Syntax hatası (CS1002)
-// public class SyntaxHatasiTest
-// {
-//     public void Calistir()
-//     {
-//         Console.WriteLine("Merhaba")
-//     }
-// }
+// 1) Syntax hatası (CS1002)
+public class SyntaxHatasiTest
+{
+    public void Calistir()
+    {
+        Console.WriteLine("Merhaba")
+    }
+}
 
 // // 2) Tip uyuşmazlığı (CS0029)
 // public class TipUyusmazligiTest
@@ -24,13 +24,13 @@ using System.Threading.Tasks;
 // }
 
 // 3) Tanımsız değişken (CS0103) — tur 4
-public class TanimsizDegiskenTest
-{
-    public void Calistir()
-    {
-        Console.WriteLine(tanimsizDegisken);
-    }
-}
+// public class TanimsizDegiskenTest
+// {
+//     public void Calistir()
+//     {
+//         Console.WriteLine();
+//     }
+// }
 
 // 4) Eksik using / bilinmeyen tip (CS0246)
 // public class EksikUsingTest
