@@ -14,23 +14,23 @@ using System.Threading.Tasks;
 //     }
 // }
 
-// 2) Tip uyuşmazlığı (CS0029)
-public class TipUyusmazligiTest
-{
-    public void Calistir()
-    {
-        string sayi = "metin";
-    }
-}
-
-// 3) Tanımsız değişken (CS0103) — tur 4
-// public class TanimsizDegiskenTest
+// // 2) Tip uyuşmazlığı (CS0029)
+// public class TipUyusmazligiTest
 // {
 //     public void Calistir()
 //     {
-//         Console.WriteLine(tanimsizDegisken);
+//         string sayi = "metin";
 //     }
 // }
+
+// 3) Tanımsız değişken (CS0103) — tur 4
+public class TanimsizDegiskenTest
+{
+    public void Calistir()
+    {
+        Console.WriteLine(tanimsizDegisken);
+    }
+}
 
 // 4) Eksik using / bilinmeyen tip (CS0246)
 // public class EksikUsingTest
