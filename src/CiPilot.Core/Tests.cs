@@ -10,7 +10,7 @@ public class SyntaxHatasiTest
 {
     public void Calistir()
     {
-        Console.WriteLine("Merhaba")
+        Console.WriteLine("Merhaba");
     }
 }
 
